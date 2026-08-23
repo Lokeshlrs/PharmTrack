@@ -1,0 +1,1 @@
+export { shipmentService } from './procurementService';

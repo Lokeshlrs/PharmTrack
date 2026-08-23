@@ -1,0 +1,10 @@
+{
+  "description": "Tracks drug inventory and supply chain efficiently to optimize stock management and ensure timely availability for healthcare providers.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

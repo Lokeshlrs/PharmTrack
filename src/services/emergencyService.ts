@@ -1,0 +1,1 @@
+export { emergencyService } from './hospitalService';

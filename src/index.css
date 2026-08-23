@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-navy-950: #060d1f;
+  --color-navy-900: #0a1628;
+  --color-navy-800: #0f1f3d;
+  --color-navy-700: #162a52;
+  --color-navy-600: #1d3a6e;
+  --color-navy-500: #254a8a;
+  --color-navy-400: #3a6aad;
+  --color-navy-300: #6494cc;
+  --color-navy-200: #a3bfe0;
+  --color-navy-100: #d1dfef;
+  --color-navy-50: #edf3f9;
+
+  --color-teal-600: #0891b2;
+  --color-teal-500: #06b6d4;
+  --color-teal-400: #22d3ee;
+  --color-teal-100: #cffafe;
+  --color-teal-50: #ecfeff;
+
+  --color-emerald-600: #059669;
+  --color-emerald-500: #10b981;
+  --color-emerald-100: #d1fae5;
+  --color-emerald-50: #ecfdf5;
+
+  --color-amber-600: #d97706;
+  --color-amber-500: #f59e0b;
+  --color-amber-100: #fef3c7;
+  --color-amber-50: #fffbeb;
+
+  --color-rose-600: #e11d48;
+  --color-rose-500: #f43f5e;
+  --color-rose-100: #ffe4e6;
+  --color-rose-50: #fff1f2;
+
+  --color-orange-500: #f97316;
+  --color-orange-100: #ffedd5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background: #f0f4f8;
+  color: #0a1628;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #a3bfe0;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6494cc;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}

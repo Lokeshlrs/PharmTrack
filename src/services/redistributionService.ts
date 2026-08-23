@@ -1,0 +1,1 @@
+export { redistributionService } from './hospitalService';
