@@ -4,17 +4,23 @@ let ioInstance = null;
 
 export const initSocket = (httpServer, clientUrls) => {
   const origins = clientUrls
-    ? clientUrls.split(',').map((url) => url.trim())
-    : ['http://localhost:5173', 'http://localhost:8443', 'http://localhost:3000'];
+    ? clientUrls.split(',').map((url) => url.trim().replace(/\/$/, ''))
+    : ['https://lokeshlrs.github.io', 'http://localhost:5173', 'http://localhost:8443', 'http://localhost:3000'];
 
   ioInstance = new Server(httpServer, {
     cors: {
       origin: (origin, callback) => {
-        // Allow all local dev origins or matches
-        if (!origin || origins.includes(origin) || origin.includes('localhost') || origin.includes('127.0.0.1')) {
+        const cleanOrigin = origin ? origin.replace(/\/$/, '') : '';
+        if (
+          !origin ||
+          origins.includes(cleanOrigin) ||
+          cleanOrigin.endsWith('.github.io') ||
+          cleanOrigin.includes('localhost') ||
+          cleanOrigin.includes('127.0.0.1')
+        ) {
           callback(null, true);
         } else {
-          callback(null, true); // Dev-friendly fallback
+          callback(null, true);
         }
       },
       methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],

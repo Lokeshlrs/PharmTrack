@@ -46,9 +46,25 @@ app.use(
   })
 );
 
+const allowedOrigins = ENV.CLIENT_URL
+  ? ENV.CLIENT_URL.split(',').map((url) => url.trim().replace(/\/$/, ''))
+  : ['https://lokeshlrs.github.io', 'http://localhost:5173', 'http://localhost:8443', 'http://localhost:3000'];
+
 app.use(
   cors({
-    origin: '*',
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      const cleanOrigin = origin.replace(/\/$/, '');
+      if (
+        allowedOrigins.includes(cleanOrigin) ||
+        cleanOrigin.endsWith('.github.io') ||
+        cleanOrigin.includes('localhost') ||
+        cleanOrigin.includes('127.0.0.1')
+      ) {
+        return callback(null, true);
+      }
+      return callback(null, true);
+    },
     credentials: true,
   })
 );
