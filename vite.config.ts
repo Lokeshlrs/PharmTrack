@@ -1,4 +1,4 @@
-import { defineConfig, type HtmlTagDescriptor, type Plugin } from 'vite'
+import { defineConfig, loadEnv, type HtmlTagDescriptor, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'node:path'
@@ -7,11 +7,17 @@ import siteConfiguration from './.figma/make/site.json'
 
 // Vite config — https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  // .figma/make/deploy-preview passes `--mode development` for cached-preview builds.
+  const env = loadEnv(mode, process.cwd(), '')
+  const viteApiUrl = process.env.VITE_API_URL || env.VITE_API_URL || 'https://pharmtrack-backend.onrender.com/api'
+  const viteSocketUrl = process.env.VITE_SOCKET_URL || env.VITE_SOCKET_URL || 'https://pharmtrack-backend.onrender.com'
   const emitSourcemaps = mode === 'development'
 
   return {
-    base: process.env.VITE_BASE_PATH || (process.env.FIGMA_PUBLIC_URL ? `${process.env.FIGMA_PUBLIC_URL}/` : '/PharmTrack/'),
+    base: process.env.VITE_BASE_PATH || env.VITE_BASE_PATH || (process.env.FIGMA_PUBLIC_URL ? `${process.env.FIGMA_PUBLIC_URL}/` : '/PharmTrack/'),
+    define: {
+      'import.meta.env.VITE_API_URL': JSON.stringify(viteApiUrl),
+      'import.meta.env.VITE_SOCKET_URL': JSON.stringify(viteSocketUrl),
+    },
     build: {
       sourcemap: emitSourcemaps ? 'inline' : false,
       minify: !emitSourcemaps,
