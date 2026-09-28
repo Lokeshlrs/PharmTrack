@@ -21,9 +21,9 @@ AI-powered drug inventory and pharmaceutical supply-chain tracking system.
 - JavaScript
 - AI
 
-## 📸 Screenshots
+Link :- 
+https://lokeshlrs.github.io/PharmTrack/
 
-![Dashboard](screenshots/dashboard.png)
 
 ## ⚙️ Installation
 
